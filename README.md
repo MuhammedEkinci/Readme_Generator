@@ -1,4 +1,4 @@
-# Readme.md 
+# Readme.md generator 
     [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
  
  
@@ -18,37 +18,37 @@
 * [Questions](#questions)
 ## Installation 
  
- copy from repo and install required npm files 
+ copy repo from github and npm install required npm's 
  
  
 ## Contributing 
  
- no one 
+ no one  
  
  
 ## Usage 
  
- to make it easier to make a readme.md file 
+ To make it easier to make readme files 
  
  
 ## Tests 
  
- to see if the bug is fixed 
+ to see if it works 
  
  
 ## My GitHub Profile 
  
- Muhammed Ekinci 
+ MuhammedEkinci 
  
  
 ## My Email Address 
  
- muhammed@gmail.com 
+ siraceddinekinci@gmail.com 
  
  
 ## Questions 
  
- If you have quesitons contact me at muhammed@gmail.com 
+ If you have quesitons contact me at siraceddinekinci@gmail.com 
  
  
 ## License 
