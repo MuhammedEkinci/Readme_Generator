@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 var fs = require("fs");
 
 // Questions
-inquirer.prompt([
+const questions = [
     {
         type: "input",
         name: "github",
@@ -51,21 +51,33 @@ inquirer.prompt([
         name: "test",
         message: "what are you testing?",
     },
-]).then(answer => {
-    // function to initialize program
-function init() {
-    inquirer.prompt(questions).then(function(answers){
-        const response =  generateMarkdown(answers);
-        console.log(response);
-        fs.writeFile("ReadMe.md", response, (err) => {
-          if (err) {
-              throw err;
-            }
-        });
-    });
-  }
-  // function call to initialize program
-  init();
+];
+
+
+const tableOfContents = `
+## Table of Contents
+* [Title](#title)
+* [Table of Contents](#TableofContents)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
+`
+
+inquirer.prompt(questions).then(data => {
+    fs.writeFileSync("README.md", (`# ${data.title} 
+    [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) \n \n \n`))
+    fs.appendFileSync("README.md", (`## Project Description \n \n ${data.descriptions} \n \n \n`))
+    fs.appendFileSync("README.md", tableOfContents)
+    fs.appendFileSync("README.md", (`## Installation \n \n ${data.install} \n \n \n`))
+    fs.appendFileSync("README.md", (`## Contributing \n \n ${data.contributing} \n \n \n`))
+    fs.appendFileSync("README.md", (`## Usage \n \n ${data.usage} \n \n \n`))
+    fs.appendFileSync("README.md", (`## Tests \n \n ${data.test} \n \n \n`))
+    fs.appendFileSync("README.md", (`## My GitHub Profile \n \n ${data.github} \n \n \n`))
+    fs.appendFileSync("README.md", (`## My Email Address \n \n ${data.email} \n \n \n`))
+    fs.appendFileSync("README.md", (`## Questions \n \n If you have quesitons contact me at ${data.email} \n \n \n`))
+    fs.appendFileSync("README.md", (`## License \n \n ${data.license} \n`))
 });
 
 
