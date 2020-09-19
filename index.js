@@ -12,7 +12,7 @@ inquirer.prompt([
         type: "list",
         name: "license",
         message: `What kind of license does your project have`,
-        choice: ["Open Source", "Public Domain", "MIT License", "Apache License", "GPL License"]
+        choices: ["MIT","GNU GPLv3","Apache-2.0","ISC"]    
     },
     {
         type: "input",
@@ -52,7 +52,20 @@ inquirer.prompt([
         message: "what are you testing?",
     },
 ]).then(answer => {
-    const { title, badge, blurb, description, installation, usage, contributing, screenshot, test, github, githubURL, authors, linkedinURL, twitter, twitterURL, email, license } = answers;
+    // function to initialize program
+function init() {
+    inquirer.prompt(questions).then(function(answers){
+        const response =  generateMarkdown(answers);
+        console.log(response);
+        fs.writeFile("ReadMe.md", response, (err) => {
+          if (err) {
+              throw err;
+            }
+        });
+    });
+  }
+  // function call to initialize program
+  init();
 });
 
 
