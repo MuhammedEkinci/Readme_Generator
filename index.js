@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 var fs = require("fs");
 
 // Questions
-const questions = [
+inquirer.prompt([
     {
         type: "input",
         name: "github",
@@ -12,6 +12,7 @@ const questions = [
         type: "list",
         name: "license",
         message: `What kind of license does your project have`,
+        choice: ["Open Source", "Public Domain", "MIT License", "Apache License", "GPL License"]
     },
     {
         type: "input",
@@ -26,18 +27,18 @@ const questions = [
     {
         type: "input",
         name: "descriptions",
-        message: `Can you tell me about your project?`,
+        message: `describe your project?`,
     },
 
     {
         type: "input",
-        message: `Give instructions on how to install.`,
+        message: `How can someone install your program?`,
         name: "install",
     },
 
     {
         type: "input",
-        message: `What makes a program run and allows memory to be ______?`,
+        message: `What is this project used for?`,
         name: "usage",
     },
     {
@@ -48,6 +49,10 @@ const questions = [
     {
         type: "input",
         name: "test",
-        message: "what are we running",
+        message: "what are you testing?",
     },
-];
+]).then(answer => {
+    const { title, badge, blurb, description, installation, usage, contributing, screenshot, test, github, githubURL, authors, linkedinURL, twitter, twitterURL, email, license } = answers;
+});
+
+
